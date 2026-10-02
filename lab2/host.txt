@@ -1,0 +1,11 @@
+Linux kali 6.18.12+kali-arm64 #1 SMP PREEMPT Kali 6.18.12-1kali1 (2026-02-25) aarch64 GNU/Linux
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             fe80::a00:27ff:fee5:f0da/64 
+docker0          DOWN           172.17.0.1/16 
+NAME    SIZE TYPE MOUNTPOINT
+sda    36.3G disk 
+├─sda1   16M part 
+├─sda2  977M part /boot/efi
+├─sda3 33.5G part /
+└─sda4  1.9G part [SWAP]
+sr0    1024M rom  
