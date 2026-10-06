@@ -1,0 +1,6 @@
+username,entitlement,source
+mac247_analyst,group:mac247ana,/etc/group
+mac247_auditor,group:mac247aud,/etc/group
+mac247_backup,group:mac247bkp,/etc/group
+mac247_auditor,group:mac247fin,/etc/group
+mac247_finlead,group:mac247fin,/etc/group

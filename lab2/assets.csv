@@ -1,0 +1,7 @@
+asset_id,kind,name,version,exposure,confidentiality,integrity,availability,pending_updates
+a01,service,tcp/46763,-,loopback,M,M,M,0
+a02,package,openssl,3.5.5-1,none,M,H,L,1
+a03,package,curl,8.21.0-2,none,M,H,L,1
+a04,package,openssh-server,1:10.2p1-5,none,M,H,L,1
+a05,package,python3,3.13.9-3,none,M,H,L,1
+a06,package,sudo,1.9.17p2-4,none,M,H,L,1
