@@ -1,0 +1,153 @@
+MAC247 Lab 2 token: 6bb9969f1154d390
+scorer loaded, 72 lines
+files found in this folder: ['assets.csv', 'controls.csv', 'patch_candidates.csv']
+assets file: yours   controls file: yours   patch candidates: 1982
+asset                  exp       controls                     inh     res  treatment
+curl                   none      none                          10   10.00  transfer
+openssh-server         none      none                          10   10.00  transfer
+python3                none      none                          10   10.00  transfer
+sudo                   none      none                          10   10.00  transfer
+openssl                none      detective                     10    7.00  transfer
+tcp/46763              loopback  none                           3    3.00  accept with review
+
+total inherent 53.00   total residual 50.00   reduction 5.7 percent
+  CHECK PASS: the register is ordered by residual risk and the total fell
+  token: 6bb9969f1154d390
+control kind     risk it removes  instances
+detective                   3.00          1
+deterrent                   0.00          0
+preventive                  0.00          0
+corrective                  0.00          0
+compensating                0.00          0
+
+  CHECK PASS: every control kind contributes a non-negative amount
+inherent against residual, top 6 assets, token 6bb9969f1154d390
+  curl             inherent  10.00 ##########
+                   residual  10.00 ==========
+  openssh-server   inherent  10.00 ##########
+                   residual  10.00 ==========
+  python3          inherent  10.00 ##########
+                   residual  10.00 ==========
+  sudo             inherent  10.00 ##########
+                   residual  10.00 ==========
+  openssl          inherent  10.00 ##########
+                   residual   7.00 =======
+  tcp/46763        inherent   3.00 ###
+                   residual   3.00 ===
+figure saved: chart_s07_bars.png
+likelihood against impact, token 6bb9969f1154d390  (each number is how many assets sit there)
+  impact
+    5 |  .    5    .    .    .  
+    4 |  .    .    .    .    .  
+    3 |  1    .    .    .    .  
+    2 |  .    .    .    .    .  
+    1 |  .    .    .    .    .  
+      +-------------------------
+         1    2    3    4    5    likelihood
+  openssl        likelihood 2  impact 5
+  curl           likelihood 2  impact 5
+  openssh-server likelihood 2  impact 5
+  python3        likelihood 2  impact 5
+  sudo           likelihood 2  impact 5
+  tcp/46763      likelihood 1  impact 3
+figure saved: chart_s07_matrix.png
+  CHECK PASS: both figures rendered
+# MAC247 lab2 treatment plan, token 6bb9969f1154d390
+
+asset       : curl (a03)
+residual now: 10.00   suggested: transfer
+exposure    : none, pending updates 1, controls none
+your change :  ..................................................
+predicted   :  ..................................................
+
+asset       : openssh-server (a04)
+residual now: 10.00   suggested: transfer
+exposure    : none, pending updates 1, controls none
+your change :  ..................................................
+predicted   :  ..................................................
+
+asset       : python3 (a05)
+residual now: 10.00   suggested: transfer
+exposure    : none, pending updates 1, controls none
+your change :  ..................................................
+predicted   :  ..................................................
+
+  CHECK PASS: three treatment candidates identified from the real ranking
+cat > score.py <<'PY'
+"""MAC 247 Lab 2 risk scorer. Standard library only, so it runs on Kali unchanged."""
+import csv, sys
+
+MOVES  = {'deterrent': 'likelihood', 'preventive': 'likelihood',
+          'detective': 'impact', 'corrective': 'impact', 'compensating': 'either'}
+EFFECT = {'deterrent': 0.90, 'preventive': 0.45, 'detective': 0.70,
+          'corrective': 0.60, 'compensating': 0.80}
+EXPOSURE_L = {'none': 1, 'loopback': 1, 'lan': 3, 'internet': 5}
+CIA_I      = {'L': 1, 'M': 3, 'H': 5}
+
+def likelihood(exposure, pending):
+    band = 0 if pending == 0 else (1 if pending <= 5 else 2)
+    return min(5, EXPOSURE_L[exposure] + band)
+
+def impact(c, i, a):
+    return max(CIA_I[c], CIA_I[i], CIA_I[a])
+
+def inherent(row):
+    return likelihood(row['exposure'], int(row['pending_updates'])) * \
+           impact(row['confidentiality'], row['integrity'], row['availability'])
+
+def residual(row, kinds):
+    lk = float(likelihood(row['exposure'], int(row['pending_updates'])))
+    im = float(impact(row['confidentiality'], row['integrity'], row['availability']))
+    for k in kinds:
+        t = MOVES[k]
+        if t == 'likelihood':
+            lk *= EFFECT[k]
+        elif t == 'impact':
+            im *= EFFECT[k]
+        elif lk >= im:
+            lk *= EFFECT[k]
+        else:
+            im *= EFFECT[k]
+    return round(lk * im, 2)
+
+def treatment(res):
+    if res >= 12:  return 'mitigate'
+    if res >= 6:   return 'transfer'
+    if res >= 3:   return 'accept with review'
+    return 'accept'
+
+def register(assets_path='assets.csv', controls_path='controls.csv'):
+    assets = list(csv.DictReader(open(assets_path)))
+    by_asset = {}
+    try:
+        for c in csv.DictReader(open(controls_path)):
+            by_asset.setdefault(c['asset_id'], []).append(c['control_kind'])
+    except FileNotFoundError:
+        pass
+    out = []
+    for a in assets:
+        kinds = by_asset.get(a['asset_id'], [])
+        inh, res = inherent(a), residual(a, kinds)
+        out.append({'asset_id': a['asset_id'], 'name': a['name'],
+                    'exposure': a['exposure'], 'pending': a['pending_updates'],
+                    'controls': '+'.join(kinds) or 'none',
+                    'inherent': inh, 'residual': res,
+                    'treatment': treatment(res)})
+    return sorted(out, key=lambda r: -r['residual'])
+
+if __name__ == '__main__':
+    rows = register(*(sys.argv[1:3] or []))
+    print(f'{"asset":22s} {"exp":9s} {"controls":26s} {"inh":>5s} {"res":>7s}  treatment')
+    for r in rows:
+        print(f'{r["name"][:22]:22s} {r["exposure"]:9s} {r["controls"][:26]:26s} '
+              f'{r["inherent"]:5d} {r["residual"]:7.2f}  {r["treatment"]}')
+    ti = sum(r['inherent'] for r in rows)
+    tr = sum(r['residual'] for r in rows)
+    print(f'\ntotal inherent {ti:.2f}   total residual {tr:.2f}   '
+          f'reduction {100 * (ti - tr) / ti:.1f} percent')
+PY
+
+# then, after your treatments and the re-export:
+python3 score.py assets.csv controls.csv | tee score_after.txt
+# token 6bb9969f1154d390
+# score.py has been written to this folder as well.

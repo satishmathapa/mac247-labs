@@ -1,0 +1,10 @@
+curl (a03) - treatment: transfer
+change: transfer risk for curl
+predicted residual: 10.00
+openssh-server (a04) - treatment: transfer
+change: transfer risk for openssh-server
+predicted residual: 10.00
+python3 (a05) - treatment: transfer
+change: transfer risk for python3
+predicted residual: 10.00
+

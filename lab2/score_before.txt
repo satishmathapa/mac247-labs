@@ -1,0 +1,9 @@
+asset                  exp       controls                     inh     res  treatment
+curl                   none      none                          10   10.00  transfer
+openssh-server         none      none                          10   10.00  transfer
+python3                none      none                          10   10.00  transfer
+sudo                   none      none                          10   10.00  transfer
+openssl                none      detective                     10    7.00  transfer
+tcp/46763              loopback  none                           3    3.00  accept with review
+
+total inherent 53.00   total residual 50.00   reduction 5.7 percent
