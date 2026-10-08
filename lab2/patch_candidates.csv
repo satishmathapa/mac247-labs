@@ -35,7 +35,6 @@ binutils-mingw-w64-i686,2.45.90.20260125-1+13.3,2.47-6+13.3+b1,kali-rolling
 binutils-mingw-w64-x86-64,2.45.90.20260125-1+13.3,2.47-6+13.3+b1,kali-rolling
 binutils,2.46-2,2.47-6,kali-rolling
 binwalk,2.4.3+dfsg1-2,2.4.3+dfsg1-3,kali-rolling
-blueman,2.4.4-1+b1,2.4.4-1+b2,kali-rolling
 bluez-obexd,5.84-1,5.87-3,kali-rolling
 bluez,5.84-1,5.87-3,kali-rolling
 bsdextrautils,2.41.3-4,2.42.3-1,kali-rolling
@@ -72,7 +71,6 @@ cron,3.0pl1-206,3.0pl1-209,kali-rolling
 cryptsetup-bin,2:2.8.4-1,2:2.8.8-1,kali-rolling
 cryptsetup-initramfs,2:2.8.4-1,2:2.8.8-1,kali-rolling
 cryptsetup,2:2.8.4-1,2:2.8.8-1,kali-rolling
-curl,8.21.0-2,8.22.0-1,kali-rolling
 dbus-bin,1.16.2-4,1.16.2-5+b1,kali-rolling
 dbus-daemon,1.16.2-4,1.16.2-5+b1,kali-rolling
 dbus-session-bus-common,1.16.2-4,1.16.2-5,kali-rolling
@@ -443,9 +441,6 @@ libct4,1.5.5+ds-1+b1,1.5.5+ds-1+b2,kali-rolling
 libctf-nobfd0,2.46-2,2.47-6,kali-rolling
 libctf0,2.46-2,2.47-6,kali-rolling
 libcups2t64,2.4.16-1,2.4.18-1,kali-rolling
-libcurl3t64-gnutls,8.21.0-2,8.22.0-1,kali-rolling
-libcurl4-gnutls,8.21.0-2,8.22.0-1,kali-rolling
-libcurl4t64,8.21.0-2,8.22.0-1,kali-rolling
 libdate-calc-xs-perl,6.4-3,6.4-3+b2,kali-rolling
 libdate-manip-perl,6.98-1,7.00-1,kali-rolling
 libdatrie1,0.2.14-1,0.2.14-2,kali-rolling
@@ -507,8 +502,6 @@ libexif12,0.6.25-2,0.6.26-1,kali-rolling
 libexiv2-28,0.28.8+dfsg-1,0.28.9+dfsg-1,kali-rolling
 libexiv2-data,0.28.8+dfsg-1,0.28.9+dfsg-1,kali-rolling
 libexo-2-0,4.20.0-1+b1,4.20.0-1+b2,kali-rolling
-libexpat1-dev,2.7.4-1,2.8.4-1,kali-rolling
-libexpat1,2.7.4-1,2.8.4-1,kali-rolling
 libext2fs2t64,1.47.2-3+b8,1.47.4-1+b2,kali-rolling
 libfaad2,2.11.2-1+b1,2.11.3-1,kali-rolling
 libfakeroot,1.37.2-1,2.1.4-1,kali-rolling
@@ -647,7 +640,6 @@ libhttp-cookies-perl,6.11-1,6.12-2,kali-rolling
 libhttp-daemon-perl,6.16-1,6.17-1,kali-rolling
 libhttp-date-perl,6.06-1,6.08-1,kali-rolling
 libhttp-message-perl,7.01-1,7.04-1,kali-rolling
-libhunspell-1.7-0,1.7.2+really1.7.2-11+b1,1.7.3+really1.7.3-5,kali-rolling
 libhwloc-plugins,2.13.0-2,2.15.0-2,kali-rolling
 libhwloc15,2.13.0-2,2.15.0-2,kali-rolling
 libhwy1t64,1.3.0-2,1.3.0-5.1,kali-rolling
@@ -689,7 +681,6 @@ libjpeg-turbo-progs,1:2.1.5-4,1:3.1.3-4,kali-rolling
 libjpeg62-turbo,1:2.1.5-4,1:3.1.3-4,kali-rolling
 libjq1,1.8.1-4+b1,1.8.2-1,kali-rolling
 libjs-bootstrap5,5.3.8+dfsg-2,5.3.8+dfsg-4,kali-rolling
-libjs-sphinxdoc,8.2.3-12,9.1.0-8,kali-rolling
 libjson-c5,0.18+ds-3,0.19+ds-1,kali-rolling
 libjson-glib-1.0-0,1.10.8+ds-2,1.10.8+ds-2+b1,kali-rolling
 libjson-xs-perl,4.040-1,4.040-1+b1,kali-rolling
@@ -717,7 +708,6 @@ libldacbt-abr2,2.0.2.3+git20200429+ed310a0-5+b1,2.0.2.3+git20200429+ed310a0-5+b2
 libldacbt-enc2,2.0.2.3+git20200429+ed310a0-5+b1,2.0.2.3+git20200429+ed310a0-5+b2,kali-rolling
 libldap-common,2.6.10+dfsg-1,2.6.14+dfsg-2,kali-rolling
 libldap2,2.6.10+dfsg-1+b1,2.6.14+dfsg-2,kali-rolling
-libldb2,2:2.11.0+samba4.23.6+dfsg-1+b1,2:2.11.0+samba4.24.6+dfsg-1,kali-rolling
 liblerc4,4.0.0+ds-5+b1,4.2.0+ds-1,kali-rolling
 liblightdm-gobject-1-0,1.32.0-7,1.33.1-3,kali-rolling
 liblilv-0-0,0.26.4-1,0.28.0-2,kali-rolling
@@ -905,8 +895,6 @@ libptexenc1,2025.20250727.75242+ds-5+b2,2026.20260303.78225+ds-5,kali-rolling
 libpulse-mainloop-glib0,17.0+dfsg1-2.1,17.0+dfsg1-3,kali-rolling
 libpulse0,17.0+dfsg1-2.1,17.0+dfsg1-3,kali-rolling
 libpwquality1,1.4.5-5+b1,1.4.5-5+b3,kali-rolling
-libpython3-dev,3.13.9-3,3.14.7-3,kali-rolling
-libpython3-stdlib,3.13.9-3,3.14.7-3,kali-rolling
 libpython3.13-dev,3.13.12-1,3.13.15-1,kali-rolling
 libpython3.13-minimal,3.13.12-1,3.13.15-1,kali-rolling
 libpython3.13-stdlib,3.13.12-1,3.13.15-1,kali-rolling
@@ -1019,7 +1007,6 @@ libsm-dev,2:1.2.6-1+b1,2:1.2.6-1+b2,kali-rolling
 libsm6,2:1.2.6-1+b1,2:1.2.6-1+b2,kali-rolling
 libsmartcols1,2.41.3-4,2.42.3-1,kali-rolling
 libsmb2-6,6.2+dfsg-3,6.2+dfsg-4,kali-rolling
-libsmbclient0,2:4.23.6+dfsg-1+b1,2:4.24.6+dfsg-1,kali-rolling
 libsmi2t64,0.4.8+dfsg2-18,0.4.8+dfsg2-18+b1,kali-rolling
 libsnappy1v5,1.2.2-2+b1,1.2.2-2+b2,kali-rolling
 libsndfile1,1.2.2-4,1.2.2-4+b1,kali-rolling
@@ -1062,15 +1049,12 @@ libsystemd0,259.1-1,261.2-1,kali-rolling
 libsz2,1.1.6-1,1.1.7-1,kali-rolling
 libtag-c2,2.1.1-2,2.3.2-3,kali-rolling
 libtag2,2.1.1-2,2.3.2-3,kali-rolling
-libtalloc2,2:2.4.3+samba4.23.6+dfsg-1+b1,2:2.4.4+samba4.24.6+dfsg-1,kali-rolling
 libtasn1-6,4.21.0-2,4.21.0-2+b1,kali-rolling
 libtbb12,2022.3.0-2,2023.1.0-3,kali-rolling
 libtbbbind-2-5,2022.3.0-2,2023.1.0-3,kali-rolling
 libtbbmalloc2,2022.3.0-2,2023.1.0-3,kali-rolling
 libtcl8.6,8.6.17+dfsg-1+b1,8.6.18+dfsg-1,kali-rolling
-libtdb1,2:1.4.14+samba4.23.6+dfsg-1+b1,2:1.4.15+samba4.24.6+dfsg-1,kali-rolling
 libteckit0,2.5.13+ds-1,2.5.13+ds-2,kali-rolling
-libtevent0t64,2:0.17.1+samba4.23.6+dfsg-1+b1,2:0.17.1+samba4.24.6+dfsg-1,kali-rolling
 libtexlua53-5,2025.20250727.75242+ds-5+b2,2026.20260303.78225+ds-5,kali-rolling
 libtext-charwidth-perl,0.04-11+b5,0.04-12+b1,kali-rolling
 libtext-csv-xs-perl,1.61-1,1.64-1+b2,kali-rolling
@@ -1150,7 +1134,6 @@ libwayland-client0,1.24.0-2+b2,1.26.0-1,kali-rolling
 libwayland-cursor0,1.24.0-2+b2,1.26.0-1,kali-rolling
 libwayland-egl1,1.24.0-2+b2,1.26.0-1,kali-rolling
 libwayland-server0,1.24.0-2+b2,1.26.0-1,kali-rolling
-libwbclient0,2:4.23.6+dfsg-1+b1,2:4.24.6+dfsg-1,kali-rolling
 libwebkit2gtk-4.1-0,2.50.5-1+b1,2.52.6-1,kali-rolling
 libwebkitgtk-6.0-4,2.50.5-1+b1,2.52.6-1,kali-rolling
 libwebp7,1.5.0-0.1+b1,1.6.0-0.1,kali-rolling
@@ -1324,18 +1307,12 @@ nsis,3.11-1+b1,3.12-1,kali-rolling
 ntfs-3g,1:2022.10.3-5+b1,1:2026.7.7-2,kali-rolling
 ocl-icd-libopencl1,2.3.4-1,2.3.4-1+b1,kali-rolling
 offsec-awae-python2,2025.4.0,2026.3.0,kali-rolling
-onboard-common,1.4.3+git20260213+ds-2,1.4.4.5-1,kali-rolling
-onboard-data,1.4.3+git20260213+ds-2,1.4.4.5-1,kali-rolling
-onboard,1.4.3+git20260213+ds-2,1.4.4.5-1,kali-rolling
 openconnect,9.12-3.3,9.21-5,kali-rolling
 openjdk-21-jre-headless,21.0.10+7-1,21.0.12.1+1-1,kali-rolling
 openjdk-21-jre,21.0.10+7-1,21.0.12.1+1-1,kali-rolling
 opensc-pkcs11,0.27.0~rc1-1,0.27.1-2,kali-rolling
 opensc,0.27.0~rc1-1,0.27.1-2,kali-rolling
 openssh-client-gssapi,1:10.2p1-5,1:10.5p1-1,kali-rolling
-openssh-client,1:10.2p1-5,1:10.5p1-1,kali-rolling
-openssh-server,1:10.2p1-5,1:10.5p1-1,kali-rolling
-openssh-sftp-server,1:10.2p1-5,1:10.5p1-1,kali-rolling
 openssl-provider-legacy,3.5.5-1,3.6.4-1,kali-rolling
 openssl,3.5.5-1,3.6.4-1,kali-rolling
 openvas-scanner,23.38.1-1,23.45.1-1,kali-rolling
@@ -1401,7 +1378,6 @@ python-is-python3,3.13.3-1,3.14.7-1,kali-rolling
 python-matplotlib-data,3.10.7+dfsg1-2,3.10.9+dfsg1-1,kali-rolling
 python-tables-data,3.10.2-3,3.11.1-3,kali-rolling
 python-tinycss2-common,1.5.1-1,1.5.1-5,kali-rolling
-python3-aardwolf,0.2.8-0kali3+b1,0.2.8-0kali3+b2,kali-rolling
 python3-aioconsole,0.8.2-1,0.8.2-2,kali-rolling
 python3-aiohappyeyeballs,2.6.1-2,2.7.1-1,kali-rolling
 python3-aiohttp-socks,0.10.1-1,0.11.0-1,kali-rolling
@@ -1464,7 +1440,6 @@ python3-dateutil,2.9.0-4,2.9.0-5,kali-rolling
 python3-dbus,1.4.0-1+b1,1.4.0-1+b2,kali-rolling
 python3-decorator,5.2.1-2,5.3.1-1,kali-rolling
 python3-deprecated,1.3.1-1,1.3.1-2,kali-rolling
-python3-dev,3.13.9-3,3.14.7-3,kali-rolling
 python3-distlib,0.4.0-1,0.4.3-1,kali-rolling
 python3-distro,1.9.0-1,1.9.0-2,kali-rolling
 python3-django,3:4.2.29-1,3:5.2.17-1,kali-rolling
@@ -1527,7 +1502,6 @@ python3-jwcrypto,1.5.6-1,1.5.6-1.2,kali-rolling
 python3-jwt,2.11.0-2,2.13.0-1,kali-rolling
 python3-kiwisolver,1.4.10~rc0-1+b1,1.5.1-1,kali-rolling
 python3-kombu,5.6.2-1,5.6.2-2,kali-rolling
-python3-ldb,2:2.11.0+samba4.23.6+dfsg-1+b1,2:2.11.0+samba4.24.6+dfsg-1,kali-rolling
 python3-legacy-cgi,2.6.4-2,2.6.4-3,kali-rolling
 python3-legacycrypt,0.3-4,0.3-5,kali-rolling
 python3-linkify-it,2.1.0-1,2.1.0-2,kali-rolling
@@ -1547,7 +1521,6 @@ python3-marshmallow-sqlalchemy,1.4.2-1,1.5.0-1,kali-rolling
 python3-marshmallow,3.26.1-0.4,3.26.2-0.1,kali-rolling
 python3-matplotlib,3.10.7+dfsg1-2,3.10.9+dfsg1-1+b1,kali-rolling
 python3-mechanize,1:0.4.10+ds-7,1:0.4.10+ds1-2,kali-rolling
-python3-minimal,3.13.9-3,3.14.7-3,kali-rolling
 python3-mitmproxy-linux,0.12.3-0kali1,0.12.11-0kali1,kali-rolling
 python3-mitmproxy-rs,0.12.3-0kali1,0.12.11-0kali1,kali-rolling
 python3-more-itertools,10.8.0-1,11.1.0-2,kali-rolling
@@ -1556,7 +1529,6 @@ python3-msgpack,1.1.2-1,1.2.1-1,kali-rolling
 python3-multidict,6.4.3-1+b1,6.4.3-2+b1,kali-rolling
 python3-mysqldb,1.4.6-2+b7,1.4.6-2+b8,kali-rolling
 python3-nacl,1.5.0-8,1.6.2-3,kali-rolling
-python3-nassl,5.3.1-0kali1,5.4.0-0kali3,kali-rolling
 python3-neo4j,5.2.1-0kali1,5.2.1-0kali2,kali-rolling
 python3-neotime,1.7.4-0kali1,1.7.4-0kali2,kali-rolling
 python3-netaddr,1.3.0-1,1.3.0-2,kali-rolling
@@ -1644,7 +1616,6 @@ python3-rpds-py,0.28.0-1,0.30.0-2+b1,kali-rolling
 python3-rq,2.6.1-1,2.12-1,kali-rolling
 python3-ruamel.yaml.clib,0.2.15+ds-1,0.2.15+ds2-2+b1,kali-rolling
 python3-ruamel.yaml,0.18.10+ds-1,0.18.14-4,kali-rolling
-python3-samba,2:4.23.6+dfsg-1+b1,2:4.24.6+dfsg-1,kali-rolling
 python3-scipy,1.16.3-4,1.17.1-5+b1,kali-rolling
 python3-secure,0.3.0-0kali1,1.0.1-0kali1,kali-rolling
 python3-serial-asyncio,0.6-4,0.6-5,kali-rolling
@@ -1676,12 +1647,9 @@ python3-sympy,1.14.0-2,1.14.0-4,kali-rolling
 python3-tables-lib,3.10.2-3+b2,3.11.1-3,kali-rolling
 python3-tables,3.10.2-3,3.11.1-3,kali-rolling
 python3-tabulate,0.9.0-1,0.10.0-1,kali-rolling
-python3-talloc,2:2.4.3+samba4.23.6+dfsg-1+b1,2:2.4.4+samba4.24.6+dfsg-1,kali-rolling
-python3-tdb,2:1.4.14+samba4.23.6+dfsg-1+b1,2:1.4.15+samba4.24.6+dfsg-1,kali-rolling
 python3-termcolor,2.4.0-2,2.4.0-3,kali-rolling
 python3-terminaltables3,4.0.0-7,4.0.0-9,kali-rolling
 python3-tinycss2,1.5.1-1,1.5.1-5,kali-rolling
-python3-tk,3.13.9-3,3.14.7-3,kali-rolling
 python3-tldextract,5.1.2-2,5.3.1-2,kali-rolling
 python3-tomlkit,0.13.3-2,0.13.3-3,kali-rolling
 python3-tornado,6.5.4-0.1,6.5.5-5,kali-rolling
@@ -1707,7 +1675,6 @@ python3-uritemplate,4.2.0-3,4.2.0-4,kali-rolling
 python3-urllib3,2.6.3-1,2.7.0-3,kali-rolling
 python3-uvloop,0.22.1+ds1-2,0.22.1+ds1-4,kali-rolling
 python3-validators,0.20.0-2,0.28.3-2,kali-rolling
-python3-venv,3.13.9-3,3.14.7-3,kali-rolling
 python3-vine,5.1.0+dfsg-1,5.1.0+dfsg-2,kali-rolling
 python3-virtualenv,20.38.0+ds-1,21.5.1+ds-1,kali-rolling
 python3-watchdog,6.0.0-4,6.0.0-5,kali-rolling
@@ -1741,8 +1708,6 @@ python3.13-minimal,3.13.12-1,3.13.15-1,kali-rolling
 python3.13-tk,3.13.12-1,3.13.15-1,kali-rolling
 python3.13-venv,3.13.12-1,3.13.15-1,kali-rolling
 python3.13,3.13.12-1,3.13.15-1,kali-rolling
-python3.14-tk,3.14.3-1,3.14.7-4,kali-rolling
-python3,3.13.9-3,3.14.7-3,kali-rolling
 qt5-gtk-platformtheme,5.15.17+dfsg-7+b1,5.15.19+dfsg-5,kali-rolling
 qt5ct,1.9-1+b2,1.9-2+b1,kali-rolling
 qt6-base-dev-tools,6.9.2+dfsg-4+b1,6.10.2+dfsg-16,kali-rolling
@@ -1810,16 +1775,11 @@ ruby3.3,3.3.8-2,3.3.8-2.2,kali-rolling
 rubygems-integration,1.19,1.20.1,kali-rolling
 runc,1.3.5+ds1-1,1.3.6+ds1-1,kali-rolling
 runit-helper,2.16.5,2.16.7,kali-rolling
-samba-common-bin,2:4.23.6+dfsg-1+b1,2:4.24.6+dfsg-1,kali-rolling
-samba-common,2:4.23.6+dfsg-1,2:4.24.6+dfsg-1,kali-rolling
-samba-libs,2:4.23.6+dfsg-1+b1,2:4.24.6+dfsg-1,kali-rolling
-samba,2:4.23.6+dfsg-1+b1,2:4.24.6+dfsg-1,kali-rolling
 sane-airscan,0.99.36-2+b2,0.99.37-2,kali-rolling
 screen,4.9.1-3.1,5.0.2-1,kali-rolling
 sed,4.9-2+b2,4.9-3,kali-rolling
 sendemail,1.56-5.2,1.56-5.3,kali-rolling
 set,8.0.3+git20241021-0kali1,8.1.3+git20260604-0kali1,kali-rolling
-smbclient,2:4.23.6+dfsg-1+b1,2:4.24.6+dfsg-1,kali-rolling
 snmp,5.9.5.2+dfsg-2.1,5.9.5.2+dfsg-3,kali-rolling
 snmpd,5.9.5.2+dfsg-2.1,5.9.5.2+dfsg-3,kali-rolling
 socat,1.8.1.1-1,1.8.1.3-2,kali-rolling
@@ -1859,7 +1819,6 @@ tcl-expect,5.45.4-4+b1,5.45.4-9,kali-rolling
 tcl8.6,8.6.17+dfsg-1+b1,8.6.18+dfsg-1,kali-rolling
 tcl,8.6.16,8.6.18,kali-rolling
 tcpreplay,4.5.2-1+b1,4.5.4-1,kali-rolling
-tdb-tools,2:1.4.14+samba4.23.6+dfsg-1+b1,2:1.4.15+samba4.24.6+dfsg-1,kali-rolling
 testdisk,7.2-0.1+b1,7.2-2,kali-rolling
 tex-gyre,20180621-7,20180621-8,kali-rolling
 texlive-base,2025.20260124-1,2026.20260911-1,kali-rolling

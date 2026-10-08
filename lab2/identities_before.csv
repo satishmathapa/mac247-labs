@@ -1,0 +1,5 @@
+username,uid,primary_group,shell,locked,last_change
+mac247_finlead,1001,mac247_finlead,/bin/bash,no,
+mac247_analyst,1002,mac247_analyst,/bin/bash,no,
+mac247_auditor,1003,mac247_auditor,/bin/bash,no,
+mac247_backup,1004,mac247_backup,/usr/sbin/nologin,no,
