@@ -1,0 +1,95 @@
+MAC247 Lab 2 token: 6bb9969f1154d390
+deterrent      moves likelihood by a factor of 0.90
+preventive     moves likelihood by a factor of 0.45
+detective      moves impact     by a factor of 0.70
+corrective     moves impact     by a factor of 0.60
+compensating   moves either     by a factor of 0.80
+deterrent      a sign reading this area is under video surveillance
+preventive     a mantrap that admits one person per badge swipe
+preventive     an nftables rule dropping inbound traffic to port 5432
+detective      an alert when one account fails six logins in a minute
+corrective     a nightly restore test of last night backup
+corrective     reimaging a workstation after a confirmed infection
+deterrent      a login banner stating that use is monitored
+detective      file integrity monitoring on /etc
+corrective     a quarterly access review that removes leftover group members
+preventive     multi-factor authentication on the administrator account
+detective      reading the audit log daily, as routine monitoring
+compensating   reading the audit log daily, because the vendor appliance cannot take multi-factor authentication and this is what stands in
+
+  CHECK PASS: twelve controls classified, including one mechanism in two roles
+  token: 6bb9969f1154d390
+PASS  inherent risk is on the 1 to 25 scale
+PASS  a preventive control beats a deterrent one on the same asset
+PASS  adding any control never raises residual risk
+PASS  internet exposure scores higher than loopback, everything else equal
+
+inherent for {'exposure': 'lan', 'pending': 7, 'c': 'H', 'i': 'H', 'a': 'M'} = 25
+  residual with one deterrent     control =  22.50
+  residual with one preventive    control =  11.25
+  residual with one detective     control =  17.50
+  residual with one corrective    control =  15.00
+  residual with one compensating  control =  20.00
+
+  CHECK PASS: the model behaves the way the five kinds say it should
+both controls deployed          :   7.88
+preventive still only planned   :  17.50
+the difference the register hides:   9.62
+
+  CHECK PASS: crediting an undeployed control understates risk by a measurable amount
+{
+  "assets.csv": [
+    "asset_id",
+    "kind",
+    "name",
+    "version",
+    "exposure",
+    "confidentiality",
+    "integrity",
+    "availability",
+    "pending_updates"
+  ],
+  "patch_candidates.csv": [
+    "package",
+    "installed",
+    "candidate",
+    "origin"
+  ],
+  "controls.csv": [
+    "asset_id",
+    "control_id",
+    "control_kind",
+    "description"
+  ],
+  "vocabularies": {
+    "kind": [
+      "service",
+      "package",
+      "filesystem",
+      "interface"
+    ],
+    "exposure": [
+      "internet",
+      "lan",
+      "loopback",
+      "none"
+    ],
+    "cia": [
+      "H",
+      "L",
+      "M"
+    ],
+    "control_kind": [
+      "deterrent",
+      "preventive",
+      "detective",
+      "corrective",
+      "compensating"
+    ]
+  }
+}
+valid file  -> 2 rows accepted
+invalid file-> assets.csv line 2: exposure='external' not in vocabulary
+
+  CHECK PASS: the validator accepts the schema and rejects an out-of-vocabulary value
+  token: 6bb9969f1154d390
