@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Thu Oct 15 19:29:05 2026 as: /usr/lib/nmap/nmap -sV -p 1-10000 -oN scan.txt -oX scan.xml 127.0.0.1 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -sV -p 1-10000 -oN scan.txt -oX scan.xml 127.0.0.1" start="1792106945" startstr="Thu Oct 15 19:29:05 2026" version="7.98" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="10000" services="1-10000"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792106945" endtime="1792107002"><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="127.0.0.1" addrtype="ipv4"/>
+<hostnames>
+<hostname name="localhost" type="PTR"/>
+</hostnames>
+<ports><extraports state="closed" count="9997">
+<extrareasons reason="reset" count="9997" proto="tcp" ports="1-8080,8083-8084,8086-10000"/>
+</extraports>
+<port protocol="tcp" portid="8081"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="blackice-icecap" method="table" conf="3"/></port>
+<port protocol="tcp" portid="8082"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="blackice-alerts" method="table" conf="3"/></port>
+<port protocol="tcp" portid="8085"><state state="open" reason="syn-ack" reason_ttl="64"/></port>
+</ports>
+<times srtt="1" rttvar="0" to="100000"/>
+</host>
+<runstats><finished time="1792107002" timestr="Thu Oct 15 19:30:02 2026" summary="Nmap done at Thu Oct 15 19:30:02 2026; 1 IP address (1 host up) scanned in 56.74 seconds" elapsed="56.74" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
