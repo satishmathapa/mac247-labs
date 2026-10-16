@@ -1,0 +1,16 @@
+{
+  "token": "9c31689f3be18c41",
+  "malicious": [
+    "198.51.100.72",
+    "203.0.113.17"
+  ],
+  "benign": [
+    "10.0.2.11",
+    "10.0.2.12",
+    "10.0.2.13",
+    "10.0.2.14",
+    "10.0.2.73"
+  ],
+  "decoy_high_volume_benign": "10.0.2.73",
+  "notes": "loud = ssh brute force then web probe then firewall deny; quiet = three spread-out ssh failures; decoy = most requests, benign"
+}

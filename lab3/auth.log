@@ -1,0 +1,24 @@
+Oct 15 18:00:07 kali sshd[7648]: Accepted publickey for analyst from 10.0.2.13 port 44682 ssh2: ED25519 SHA256:fa7e099dec636318050138
+Oct 15 18:00:11 kali sshd[4881]: Accepted publickey for backup from 10.0.2.11 port 56855 ssh2: ED25519 SHA256:9780c03fe8dc3756f8e948
+Oct 15 18:00:14 kali sshd[8078]: Accepted publickey for analyst from 10.0.2.12 port 41766 ssh2: ED25519 SHA256:1e8b158849eb553ee17f06
+Oct 15 18:00:18 kali sshd[2946]: Accepted publickey for analyst from 10.0.2.14 port 51521 ssh2: ED25519 SHA256:9370a560c8394d43c26407
+Oct 15 18:00:23 kali sshd[6351]: Accepted publickey for student from 10.0.2.13 port 56668 ssh2: ED25519 SHA256:e775aa92f8985cc77388c3
+Oct 15 18:00:24 kali sshd[4853]: Accepted publickey for analyst from 10.0.2.14 port 40104 ssh2: ED25519 SHA256:10a6f78edd0f6c79930aca
+Oct 15 18:01:20 kali sshd[5669]: Failed password for backup from 10.0.2.11 port 46068 ssh2
+Oct 15 18:01:29 kali sshd[5074]: Failed password for backup from 10.0.2.11 port 53384 ssh2
+Oct 15 18:01:43 kali sshd[2110]: Failed password for student from 10.0.2.13 port 41143 ssh2
+Oct 15 18:01:46 kali sshd[54331]: Failed password for invalid user test from 198.51.100.72 port 54331 ssh2
+Oct 15 18:01:47 kali sshd[54331]: Failed password for root from 198.51.100.72 port 54332 ssh2
+Oct 15 18:01:50 kali sshd[54331]: Failed password for invalid user admin from 198.51.100.72 port 54333 ssh2
+Oct 15 18:01:51 kali sshd[54331]: Failed password for root from 198.51.100.72 port 54334 ssh2
+Oct 15 18:01:52 kali sshd[54331]: Failed password for invalid user test from 198.51.100.72 port 54335 ssh2
+Oct 15 18:01:56 kali sshd[54331]: Failed password for root from 198.51.100.72 port 54336 ssh2
+Oct 15 18:02:01 kali sshd[54331]: Failed password for invalid user test from 198.51.100.72 port 54337 ssh2
+Oct 15 18:02:03 kali sshd[54331]: Failed password for root from 198.51.100.72 port 54338 ssh2
+Oct 15 18:02:06 kali sshd[54331]: Failed password for invalid user oracle from 198.51.100.72 port 54339 ssh2
+Oct 15 18:02:10 kali sshd[54331]: Failed password for root from 198.51.100.72 port 54340 ssh2
+Oct 15 18:02:13 kali sshd[54331]: Failed password for invalid user test from 198.51.100.72 port 54341 ssh2
+Oct 15 18:02:33 kali sshd[54331]: error: maximum authentication attempts exceeded for root from 198.51.100.72 port 54331 ssh2 [preauth]
+Oct 15 18:09:56 kali sshd[7894]: Failed password for invalid user svc from 203.0.113.17 port 59754 ssh2
+Oct 15 18:16:13 kali sshd[8298]: Failed password for invalid user svc from 203.0.113.17 port 55266 ssh2
+Oct 15 18:22:28 kali sshd[3302]: Failed password for invalid user svc from 203.0.113.17 port 45174 ssh2
