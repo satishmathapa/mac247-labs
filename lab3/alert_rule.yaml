@@ -1,0 +1,17 @@
+# MAC247 lab3 detection rule, token 9c31689f3be18c41
+rule:
+  id: mac247-9c3168-chain
+  name: authentication failure followed by web probing and a firewall denial
+  sources: [auth.log, http_access.log, firewall.log]
+  logic: >
+    same source address produces an ssh authentication failure, then an HTTP
+    response in the 4xx range, then a firewall denial, in that order
+  window: 3600 seconds
+  severity: high
+  measured_on: 7 addresses, 2 hostile
+  expected_precision: 1.00
+  expected_recall: 1.00
+  expected_f1: 1.00
+  tuning_note: >
+    dropping the ordering requirement raises recall no further and costs
+    3 false positives per 7 addresses observed
