@@ -1,0 +1,105 @@
+MAC247 Lab 3 token: 9c31689f3be18c41
+generator loaded; build(token, outdir) writes the four files
+files found in this folder: ['auth.log', 'firewall.log', 'ground_truth.json', 'http_access.log']
+
+loaded from your Thursday export
+  auth.log             24 lines
+  http_access.log      46 lines
+  firewall.log          8 lines
+  ground truth       2 hostile addresses, 5 benign
+78 events from 7 addresses across 3 sources
+
+address          events  sources                kinds
+10.0.2.73            24  http                   http_ok
+198.51.100.72        18  auth,firewall,http     auth_fail,auth_maxtries,fw_deny,http_4xx
+10.0.2.11            10  auth,firewall,http     auth_fail,auth_ok,fw_deny,http_ok
+10.0.2.13             8  auth,firewall,http     auth_fail,auth_ok,fw_deny,http_ok
+10.0.2.12             7  auth,firewall,http     auth_ok,fw_deny,http_ok
+10.0.2.14             6  auth,http              auth_ok,http_ok
+203.0.113.17          5  auth,firewall,http     auth_fail,fw_deny,http_4xx
+
+  CHECK PASS: three formats normalized into one record shape
+  token: 9c31689f3be18c41
+busiest address      : 10.0.2.73 with 24 events
+is it hostile        : False
+actually hostile     : ['198.51.100.72', '203.0.113.17']
+  198.51.100.72     18 events, rank 2 by volume
+  203.0.113.17       5 events, rank 7 by volume
+
+  CHECK PASS: volume ranking located, and it does not answer the question
+timeline for 198.51.100.72, token 9c31689f3be18c41
+
+  +    0s  auth      auth_fail      Oct 15 18:01:46 kali sshd[54331]: Failed password for invalid user test 
+  +    1s  auth      auth_fail      Oct 15 18:01:47 kali sshd[54331]: Failed password for root from 198.51.1
+  +    4s  auth      auth_fail      Oct 15 18:01:50 kali sshd[54331]: Failed password for invalid user admin
+  +    5s  auth      auth_fail      Oct 15 18:01:51 kali sshd[54331]: Failed password for root from 198.51.1
+  +    6s  auth      auth_fail      Oct 15 18:01:52 kali sshd[54331]: Failed password for invalid user test 
+  +   10s  auth      auth_fail      Oct 15 18:01:56 kali sshd[54331]: Failed password for root from 198.51.1
+  +   15s  auth      auth_fail      Oct 15 18:02:01 kali sshd[54331]: Failed password for invalid user test 
+  +   17s  auth      auth_fail      Oct 15 18:02:03 kali sshd[54331]: Failed password for root from 198.51.1
+  +   20s  auth      auth_fail      Oct 15 18:02:06 kali sshd[54331]: Failed password for invalid user oracl
+  +   24s  auth      auth_fail      Oct 15 18:02:10 kali sshd[54331]: Failed password for root from 198.51.1
+  +   27s  auth      auth_fail      Oct 15 18:02:13 kali sshd[54331]: Failed password for invalid user test 
+  +   47s  auth      auth_maxtries  Oct 15 18:02:33 kali sshd[54331]: error: maximum authentication attempts
+  +   55s  http      http_4xx       404 /admin/config.php
+  +   64s  http      http_4xx       403 /.env
+  +   66s  http      http_4xx       404 /wp-login.php
+  +   76s  firewall  fw_deny        denied to port 5432
+  +   87s  firewall  fw_deny        denied to port 3306
+  +   93s  firewall  fw_deny        denied to port 445
+
+  CHECK PASS: the chain runs authentication, then web, then firewall
+rule                                    TP  FP  FN   prec    rec     F1
+A  more than 5 auth failures in 60s      1   0   1   1.00   0.50   0.67
+B  any auth failure at all               2   2   0   0.50   1.00   0.67
+C  seen in all three log sources         2   3   0   0.40   1.00   0.57
+D  auth failure, then 4xx, then deny     2   0   0   1.00   1.00   1.00
+
+best by F1: D  auth failure, then 4xx, then deny
+  CHECK PASS: a precise rule missed half, and only the ordered chain got both right
+  token: 9c31689f3be18c41
+flagged by C but not by D: ['10.0.2.11', '10.0.2.12', '10.0.2.13']
+  10.0.2.11        10 events -> auth:auth_fail, auth:auth_ok, firewall:fw_deny, http:http_ok
+                   hostile in the ground truth: False
+  10.0.2.12        7 events -> auth:auth_ok, firewall:fw_deny, http:http_ok
+                   hostile in the ground truth: False
+  10.0.2.13        8 events -> auth:auth_fail, auth:auth_ok, firewall:fw_deny, http:http_ok
+                   hostile in the ground truth: False
+
+  CHECK PASS: the false positives of rule C are named, one address at a time
+events by address and kind, * marks hostile, token 9c31689f3be18c41
+  address               auth_ok auth_fail   http_ok  http_4xx   fw_deny   total
+  10.0.2.73                   0         0        24         0         0      24
+  198.51.100.72 *             0        11         0         3         3      17
+  10.0.2.11                   1         2         5         0         2      10
+  10.0.2.13                   2         1         4         0         1       8
+  10.0.2.12                   1         0         5         0         1       7
+  10.0.2.14                   2         0         4         0         0       6
+  203.0.113.17 *              0         3         0         1         1       5
+
+rule quality, token 9c31689f3be18c41
+  A  more than 5 auth failures i precision 1.00 ####################  recall 0.50 ==========
+  B  any auth failure at all     precision 0.50 ##########            recall 1.00 ====================
+  C  seen in all three log sourc precision 0.40 ########              recall 1.00 ====================
+  D  auth failure, then 4xx, the precision 1.00 ####################  recall 1.00 ====================
+figure saved: chart_s10_monitoring.png
+  CHECK PASS: both figures rendered
+# MAC247 lab3 detection rule, token 9c31689f3be18c41
+rule:
+  id: mac247-9c3168-chain
+  name: authentication failure followed by web probing and a firewall denial
+  sources: [auth.log, http_access.log, firewall.log]
+  logic: >
+    same source address produces an ssh authentication failure, then an HTTP
+    response in the 4xx range, then a firewall denial, in that order
+  window: 3600 seconds
+  severity: high
+  measured_on: 7 addresses, 2 hostile
+  expected_precision: 1.00
+  expected_recall: 1.00
+  expected_f1: 1.00
+  tuning_note: >
+    dropping the ordering requirement raises recall no further and costs
+    3 false positives per 7 addresses observed
+
+  CHECK PASS: the deployable rule carries its own measured expectations
