@@ -1,0 +1,6 @@
+key_id           sensitivity     bits  age escrow  verdict
+kek-rsa-3072     restricted      3072    0 no      FAIL policy requires escrow and this key has none
+dek_v2           restricted       256    0 yes     PASS
+dek_2025_fall    confidential     128  420 no      FAIL key is 128 bits, policy needs 256; age 420 days exceeds rotation 365; policy requires escrow and this key has none
+
+3 keys checked, 2 failing

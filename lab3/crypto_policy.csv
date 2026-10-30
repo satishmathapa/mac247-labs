@@ -1,0 +1,5 @@
+sensitivity,at_rest,in_transit,min_key_bits,rotate_days,escrow,controls
+public,no,yes,0,0,no,SC-13
+internal,no,yes,128,730,no,SC-8 SC-13
+confidential,yes,yes,256,365,yes,SC-12 SC-13 SC-28
+restricted,yes,yes,256,90,yes,SC-12 SC-13 SC-28

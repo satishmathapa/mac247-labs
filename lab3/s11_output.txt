@@ -1,0 +1,110 @@
+MAC247 Lab 3 token: 9c31689f3be18c41
+  50,000 iterations       6.5 ms
+ 100,000 iterations      11.4 ms
+ 200,000 iterations      19.7 ms
+ 400,000 iterations      33.1 ms
+ 600,000 iterations      45.3 ms
+
+cost per iteration      : 0.0754 microseconds
+budget                  : 250 ms
+largest count that fits : 3,310,000
+  CHECK PASS: the iteration count came from a measurement on this machine
+derivation cost on this machine, token 9c31689f3be18c41
+     50,000 iterations       6.5 ms  ######
+    100,000 iterations      11.4 ms  ##########
+    200,000 iterations      19.7 ms  #################
+    400,000 iterations      33.1 ms  #############################
+    600,000 iterations      45.3 ms  ########################################
+  budget 250 ms
+figure saved: chart_s11_cost.png
+  CHECK PASS: the cost curve rendered
+14,000,000 candidates at 3,310,000 iterations each
+  one core of this runtime :      970.8 hours
+  a rig 500 times faster   :       1.94 hours
+
+The second line is why a key derivation function is a delay, not a defense. The
+defense is that the password was never in the list, which is a policy control.
+KEK          : a3d7be06d1114388a0b945ea4ce068a4... (derived, 3,310,000 iterations)
+DEK          : a99c84c370be38166c9f8b95ab79025d... (random)
+wrapped DEK  : 80 bytes
+sealed record: 117 bytes for 69 bytes of plaintext
+
+  CHECK PASS: the data key round-tripped through the key encryption key
+one flipped bit -> authentication failed: this blob was altered or the key is wrong
+wrong associated data -> refused
+
+  CHECK PASS: the tag caught a flipped bit and a swapped context label
+ciphertext before rotation: 4f432b5eb7e12629a8ec066aaf09309e21dc29c097e346ea...
+ciphertext after rotation : 8417a752e98d5c061c5286b637b3953a9f8c7959f4c36c0e...
+old data key opens the rotated blob: False
+
+  CHECK PASS: rotation replaced the ciphertext and retired the old data key
+  token: 9c31689f3be18c41
+operational copy of the data key: destroyed
+escrow recovery          : the record is readable again
+
+  CHECK PASS: escrow recovered data that revocation had made unreadable
+level          rest  transit   bits  rotate escrow  controls
+public         no    yes          0       0 no      SC-13
+internal       no    yes        128     730 no      SC-8 SC-13
+confidential   yes   yes        256     365 yes     SC-12 SC-13 SC-28
+restricted     yes   yes        256      90 yes     SC-12 SC-13 SC-28
+
+  CHECK PASS: the policy is monotonic in sensitivity, both ways
+key_id           sensitivity     bits  age escrow  verdict
+kek-001          restricted       256    3 yes     PASS
+dek-001          restricted       256    3 yes     PASS
+dek-old          confidential     128  400 no      FAIL key is 128 bits, policy needs 256; age 400 days exceeds rotation 365; policy requires escrow and this key has none
+
+3 keys checked, 1 failing
+
+  CHECK PASS: the checker passed two good keys and failed the stale 128-bit one
+cat > crypto_policy.csv <<'CSV'
+sensitivity,at_rest,in_transit,min_key_bits,rotate_days,escrow,controls
+public,no,yes,0,0,no,SC-13
+internal,no,yes,128,730,no,SC-8 SC-13
+confidential,yes,yes,256,365,yes,SC-12 SC-13 SC-28
+restricted,yes,yes,256,90,yes,SC-12 SC-13 SC-28
+CSV
+
+cat > policy_check.py <<'PY'
+"""MAC 247 Lab 3: does the key hierarchy on this machine meet the policy?
+Standard library only.   usage: python3 policy_check.py keyring_manifest.csv crypto_policy.csv
+"""
+import csv, sys
+
+def load_policy(path):
+    return {r['sensitivity']: r for r in csv.DictReader(open(path))}
+
+def check(manifest_path, policy_path):
+    pol = load_policy(policy_path)
+    rows, failures = list(csv.DictReader(open(manifest_path))), 0
+    print(f'{"key_id":16s} {"sensitivity":14s} {"bits":>5s} {"age":>4s} {"escrow":7s} verdict')
+    for r in rows:
+        p = pol.get(r['sensitivity'])
+        if p is None:
+            print(f'{r["key_id"]:16s} {r["sensitivity"]:14s} '
+                  f'{"":5s} {"":4s} {"":7s} FAIL unknown sensitivity')
+            failures += 1
+            continue
+        why = []
+        if int(r['key_bits']) < int(p['min_key_bits']):
+            why.append(f'key is {r["key_bits"]} bits, policy needs {p["min_key_bits"]}')
+        if int(p['rotate_days']) and int(r['age_days']) > int(p['rotate_days']):
+            why.append(f'age {r["age_days"]} days exceeds rotation {p["rotate_days"]}')
+        if p['escrow'] == 'yes' and r['escrowed'] != 'yes':
+            why.append('policy requires escrow and this key has none')
+        failures += bool(why)
+        print(f'{r["key_id"]:16s} {r["sensitivity"]:14s} {r["key_bits"]:>5s} '
+              f'{r["age_days"]:>4s} {r["escrowed"]:7s} '
+              f'{"PASS" if not why else "FAIL " + "; ".join(why)}')
+    print(f'\n{len(rows)} keys checked, {failures} failing')
+    return failures
+
+if __name__ == '__main__':
+    a = sys.argv[1] if len(sys.argv) > 1 else 'keyring_manifest.csv'
+    b = sys.argv[2] if len(sys.argv) > 2 else 'crypto_policy.csv'
+    raise SystemExit(1 if check(a, b) else 0)
+PY
+# token 9c31689f3be18c41
+# crypto_policy.csv and policy_check.py have been written to this folder as well.

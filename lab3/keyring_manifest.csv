@@ -1,0 +1,4 @@
+key_id,sensitivity,key_bits,age_days,escrowed
+kek-rsa-3072,restricted,3072,0,no
+dek_v2,restricted,256,0,yes
+dek_2025_fall,confidential,128,420,no

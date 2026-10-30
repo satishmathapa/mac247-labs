@@ -1,0 +1,4 @@
+key_id,sensitivity,key_bits,age_days,escrowed
+kek-001,restricted,256,3,yes
+dek-001,restricted,256,3,yes
+dek-old,confidential,128,400,no
