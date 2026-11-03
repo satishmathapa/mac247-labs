@@ -1,0 +1,4 @@
+port,service,exposure,expected_before_rules,expected_after_rules
+8081,blackice-icecap,loopback,connects,"timeout, no response"
+8082,blackice-alerts,loopback,connects,"timeout, no response"
+8085,unknown,loopback,connects,"timeout, no response"
