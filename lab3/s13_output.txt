@@ -1,0 +1,78 @@
+MAC247 Lab 3 token: 9c31689f3be18c41
+files found in this folder: ['scan.xml']
+scan of 127.0.0.1, 3 ports recorded
+
+  port state     service            conf method   product and version
+  8081 open      blackice-icecap       3 table    
+  8082 open      blackice-alerts       3 table    
+  8085 open      unknown               0          
+
+3 open, 0 in another state
+  CHECK PASS: the machine-readable scan parsed, states and confidences intact
+  token: 9c31689f3be18c41
+identified by talking to the service : 0
+
+labelled from the port-number table  : 3
+     8081 blackice-icecap  (no banner; the name is a convention, not evidence)
+     8082 blackice-alerts  (no banner; the name is a convention, not evidence)
+     8085 unknown          (no banner; the name is a convention, not evidence)
+
+  CHECK PASS: the inventory separates what was observed from what was assumed
+  port service          plane          exposure    evidence  note
+  8081 blackice-icecap  management     loopback    assumed   not recognized, so nothing is allowed to reach it
+  8082 blackice-alerts  management     loopback    assumed   not recognized, so nothing is allowed to reach it
+  8085 unknown          management     loopback    assumed   not recognized, so nothing is allowed to reach it
+
+  CHECK PASS: every open port carries a plane, an exposure and the basis for its label
+loopback     reachable planes: management
+
+no plane is reachable from a range that also reaches another plane
+
+  CHECK PASS: the plane separation check ran over the real inventory
+# MAC247 lab 3 filtering policy, generated in session 13, token 9c31689f3be18c41
+# loads into its own table so nothing already on the machine is disturbed
+table inet mac247 {
+  chain input {
+    type filter hook input priority 0; policy accept;
+    iif "lo" tcp dport 8081 counter drop        # blackice-icecap: not recognized, so nothing is allowed to reach it
+    iif "lo" tcp dport 8082 counter drop        # blackice-alerts: not recognized, so nothing is allowed to reach it
+    iif "lo" tcp dport 8085 counter drop        # unknown: not recognized, so nothing is allowed to reach it
+  }
+}
+
+  CHECK PASS: one rule per open port, all of them scoped to the loopback interface
+port,service,exposure,expected_before_rules,expected_after_rules
+8081,blackice-icecap,loopback,connects,"timeout, no response"
+8082,blackice-alerts,loopback,connects,"timeout, no response"
+8085,unknown,loopback,connects,"timeout, no response"
+
+  CHECK PASS: a prediction exists for every port, and at least one of them is a drop
+  token: 9c31689f3be18c41
+cat > nft_rules.conf <<'NFT'
+# MAC247 lab 3 filtering policy, generated in session 13, token 9c31689f3be18c41
+# loads into its own table so nothing already on the machine is disturbed
+table inet mac247 {
+  chain input {
+    type filter hook input priority 0; policy accept;
+    iif "lo" tcp dport 8081 counter drop        # blackice-icecap: not recognized, so nothing is allowed to reach it
+    iif "lo" tcp dport 8082 counter drop        # blackice-alerts: not recognized, so nothing is allowed to reach it
+    iif "lo" tcp dport 8085 counter drop        # unknown: not recognized, so nothing is allowed to reach it
+  }
+}
+NFT
+
+cat > test_plan.csv <<'CSV'
+port,service,exposure,expected_before_rules,expected_after_rules
+8081,blackice-icecap,loopback,connects,"timeout, no response"
+8082,blackice-alerts,loopback,connects,"timeout, no response"
+8085,unknown,loopback,connects,"timeout, no response"
+CSV
+
+# then, in session 14, in this order:
+sudo nft -c -f nft_rules.conf      # check the syntax without loading anything
+sudo nft -f nft_rules.conf         # load it
+sudo nft list table inet mac247    # read back what the kernel actually holds
+#   ... run the connection tests ...
+sudo nft delete table inet mac247  # remove it before you leave
+# token 9c31689f3be18c41
+# nft_rules.conf and test_plan.csv have been written to this folder as well.
