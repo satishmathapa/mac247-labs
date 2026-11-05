@@ -1,0 +1,7 @@
+LoginGraceTime 120
+MaxAuthTries 6
+PermitRootLogin prohibit-password
+PubkeyAuthentication yes
+PasswordAuthentication yes
+X11Forwarding yes
+PermitEmptyPasswords no
